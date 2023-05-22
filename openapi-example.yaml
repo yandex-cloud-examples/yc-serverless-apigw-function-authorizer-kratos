@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: API with Ory Kratos Authorization
+  version: 1.0.0
+
+paths:
+  /authorized/api:
+    get:
+      summary: Authorized operation, needs session cookie from Ory Kratos
+      operationId: cookieAuthApi
+      security:
+        - cookieAuth: [ ]
+      x-yc-apigateway-integration:
+        type: dummy
+        content:
+          '*': "Authorized!"
+        http_code: 200
+        http_headers:
+          'Content-Type': "text/plain"
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: ory_kratos_session
+      x-yc-apigateway-authorizer:
+        type: function
+        function_id: ${kratos-authorizer-function-id}
+        service_account_id: ${kratos-authorizer-invoker-service-account-id}
