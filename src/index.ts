@@ -11,7 +11,7 @@ const kratosAPI = new FrontendApi(
     }),
 )
 
-export const handler: Handler.ApiGatewayAuthorizer = async (event: Authorizer.Event): Promise<Authorizer.Result> => {
+export const handler: Handler.ApiGatewayAuthorizer = async (event) => {
     let response: Authorizer.Result = {
         isAuthorized: false,
         context: {}

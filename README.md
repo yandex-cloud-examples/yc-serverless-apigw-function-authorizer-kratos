@@ -20,10 +20,12 @@
 
 ## Тестирование
 
-1. Откройте браузер и зайдите на страницу консоли Ory Kratos по адресу `https://${kratos-api-gateway-domain}/ui/`.
+1. Откройте браузер и зайдите на страницу тестовой консоли Ory Kratos по
+   адресу `https://${kratos-api-gateway-domain}/ui/`.
 2. Зарегистрируйте пользователя.
-3. Откройте консоль разработчика в браузере и скопируйте значение cookies с названием `ory_kratos_session`.
-4. Выполните
+3. Выполните вход `https://${kratos-api-gateway-domain}/ui/login`.
+4. Откройте консоль разработчика в браузере и скопируйте значение cookies с названием `ory_kratos_session`.
+5. Выполните
    команду `curl 'https://${authorized-api-gateway-domain}/authorized/api' -H 'Cookie: ory_kratos_session=${ory-kratos-cookie}'`,
    подставив в качестве `${authorized-api-gateway-domain}` доменное имя API-шлюза, созданного на 6-м шаге установки, а в
    качестве `${ory-kratos-cookie}` - значение куки, скопированное на предыдущем шаге. Если в ответе вы
